@@ -1,0 +1,12 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build
+dist/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+
+# Ignore macOS system files
+.DS_Store
