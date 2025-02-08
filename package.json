@@ -9,7 +9,7 @@
     },
     "keywords": [],
     "author": "Shakti Ranjan Debata <debatashaktiranjan@gmail.com>",
-    "license": "ISC",
+    "license": "MIT",
     "packageManager": "pnpm@9.15.4",
     "devDependencies": {
         "@types/node": "^22.13.1",
