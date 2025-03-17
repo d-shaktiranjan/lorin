@@ -1,18 +1,23 @@
 {
     "name": "lorin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Express middleware for colorful API logging with file & database support.",
     "type": "module",
     "main": "src/index.ts",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc"
     },
     "keywords": [],
     "author": "Shakti Ranjan Debata <debatashaktiranjan@gmail.com>",
     "license": "MIT",
     "packageManager": "pnpm@9.15.4",
     "devDependencies": {
+        "@types/express": "^5.0.0",
         "@types/node": "^22.13.1",
         "typescript": "^5.7.3"
+    },
+    "dependencies": {
+        "express": "^4.21.2"
     }
 }
