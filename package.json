@@ -3,7 +3,8 @@
     "version": "1.0.1",
     "description": "Express middleware for colorful API logging with file & database support.",
     "type": "module",
-    "main": "src/index.ts",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc"
