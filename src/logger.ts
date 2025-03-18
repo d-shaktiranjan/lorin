@@ -1,4 +1,5 @@
 import { writeFile } from "fs/promises";
+import { existsSync, mkdirSync } from "fs";
 
 export const colorize = (...args: unknown[]) => ({
     red: `\x1b[31m${args.join(" ")}\x1b[0m`,
@@ -8,13 +9,15 @@ export const colorize = (...args: unknown[]) => ({
     default: `\x1b[0m${args.join(" ")}\x1b[0m`,
 });
 
+const LOG_DIR = ".logs";
+
 const LOG_RECORDS: Record<
     string,
     { filePath: string; color: keyof ReturnType<typeof colorize> }
 > = {
-    INFO: { filePath: ".logs/info.log", color: "cyan" },
-    ERROR: { filePath: ".logs/error.log", color: "red" },
-    SUCCESS: { filePath: ".logs/success.log", color: "green" },
+    INFO: { filePath: `${LOG_DIR}/info.log`, color: "cyan" },
+    ERROR: { filePath: `${LOG_DIR}/error.log`, color: "red" },
+    SUCCESS: { filePath: `${LOG_DIR}/success.log`, color: "green" },
 };
 
 export const logger = (
@@ -37,6 +40,9 @@ export function logMessageToConsoleAndFile(
     const logMessage = `[${timeStamp}] ${message}\n`;
 
     console.log(`[${timeStamp}]`, colorize(message)[color]);
+
+    // create logs dir
+    if (!existsSync(LOG_DIR)) mkdirSync(LOG_DIR);
 
     // store in to file
     writeFile(filePath, logMessage, { flag: "a" }).catch(console.error);
