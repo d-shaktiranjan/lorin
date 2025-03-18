@@ -2,6 +2,7 @@
     "name": "lorin",
     "version": "1.0.2",
     "description": "Express middleware for colorful API logging with file.",
+    "type": "module",
     "main": "dist/index.cjs",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
@@ -10,9 +11,21 @@
         "require": "./dist/index.cjs"
     },
     "scripts": {
-        "build": "tsc && cp dist/index.js dist/index.mjs && cp dist/index.js dist/index.cjs"
+        "build": "tsc && cp dist/index.js dist/index.mjs && cp dist/index.js dist/index.cjs",
+        "publish": "npm publish --access public"
     },
-    "type": "module",
+    "keywords": [
+        "lorin",
+        "express",
+        "logger",
+        "middleware",
+        "logging",
+        "express-logger"
+    ],
+    "author": "Shakti Ranjan Debata <debatashaktiranjan@gmail.com>",
+    "repository": "d-shaktiranjan/lorin",
+    "homepage": "https://github.com/d-shaktiranjan/lorin/blob/main/README.md",
+    "license": "MIT",
     "devDependencies": {
         "@types/express": "^5.0.0",
         "typescript": "^5.8.2"
