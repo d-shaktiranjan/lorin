@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { logMessageToConsoleAndFile, colorize } from "./logger";
+import { logMessageToConsoleAndFile, colorize } from "./logger.js";
 
 const loggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const startTime = Date.now();

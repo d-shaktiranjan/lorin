@@ -2,10 +2,12 @@
     "compilerOptions": {
         "outDir": "dist",
         "rootDir": "src",
-        "module": "CommonJS",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "target": "ES6",
         "strict": true,
-        "declaration": true
+        "declaration": true,
+        "allowJs": true
     },
     "include": [
         "src"
