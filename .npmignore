@@ -1,0 +1,28 @@
+# TypeScript source files
+src/
+
+# Build artifacts that are not needed
+dist/**/*.map
+
+# Configuration files
+tsconfig.json
+tsconfig.*.json
+
+# Dependency management files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Development-related files
+.npmignore
+.gitignore
+.eslintrc.js
+.prettierrc
+.prettierignore
+.editorconfig
+
+# Logs & temporary files
+logs/
+*.log
+.npmrc
+.DS_Store
