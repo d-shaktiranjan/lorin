@@ -12,7 +12,7 @@
     },
     "scripts": {
         "build": "tsc && cp dist/index.js dist/index.mjs && cp dist/index.js dist/index.cjs",
-        "publish": "npm publish --access public",
+        "publish": "npm publish",
         "spell": "cspell lint .",
         "format.check": "prettier . --check",
         "format": "prettier . --write",
