@@ -1,11 +1,11 @@
-name: ESLint, Format & Spell Checker
+name: Code quality checker & publish
 
 on:
   push:
   pull_request:
 
 jobs:
-  cache-and-install:
+  checker:
     runs-on: ubuntu-latest
 
     steps:
@@ -55,3 +55,37 @@ jobs:
         run: |
           pnpm lint
           echo "Congrats! Your code passes the ESLint check 👍"
+
+  publish:
+    needs: checker
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Set up Node.js with the specified version from .nvmrc
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      # Install pnpm via corepack
+      - name: Install pnpm
+        run: corepack enable pnpm
+
+      # Install project dependencies (ensure the cache is used)
+      - name: Install dependencies
+        run: pnpm install
+
+      # Build the project
+      - name: Build
+        run: pnpm build
+
+      # Publish on npm
+      - name: Publish the package
+        run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
