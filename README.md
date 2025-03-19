@@ -10,18 +10,9 @@ npm install lorin
 
 ## Usages
 
-### General logger
-
-```js
-import { logger } from "lorin";
-
-logger("App started"); // general propose (default type will be "INFO")
-logger("App started", "INFO"); // Alternatively you can also pass "INFO"
-logger("Successfully connect to DB", "SUCCESS"); // for success logs
-logger("Unable to connect to the DB", "ERROR"); // for failure or error logs
-```
-
 ### API Middleware
+
+Logs every incoming request, including the time, protocol, method, endpoint, status code, and the time taken by your server (in ms). It also stores the log in the `.logs/api.log` file.
 
 ```js
 import { loggerMiddleware } from "lorin";
@@ -32,13 +23,43 @@ const app = express();
 app.use(loggerMiddleware); // use the middleware before using your app routers & endpoints
 ```
 
+Sample console output:
+![Screenshot 2025-03-20 at 12 13 36 AM](https://github.com/user-attachments/assets/88463324-d888-4c6f-b752-37f62350266b)
+
+### General logger
+
+This can be used to highlight specific events, such as server restarts, database connections, and more. The logs are stored in the corresponding files mentioned below.
+
+```js
+import { logger } from "lorin";
+
+logger("App started"); // general propose (default type will be "INFO")
+logger("App started", "INFO"); // You can also specify the log level as "INFO"
+logger("Successfully connect to DB", "SUCCESS"); // for success logs
+logger("Unable to connect to the DB", "ERROR"); // for failure or error logs
+```
+
+Sample console output:
+![Screenshot 2025-03-20 at 12 03 48 AM](https://github.com/user-attachments/assets/c8da1919-e8c9-41d8-9567-4b69b0d91300)
+
 ## Log levels & paths
 
-Lorin provides different log levels, each with a specific console color and default file storage location.
+Lorin offers different log levels, each with a specific console color and default file storage location.
 
-| Log level | Description              | Console color         | File path           |
-| --------- | ------------------------ | --------------------- | ------------------- |
-| `INFO`    | General information logs | Cyan                  | `.logs/info.log`    |
-| `ERROR`   | Errors and exceptions    | Red                   | `.logs/error.log`   |
-| `SUCCESS` | Success messages         | Green                 | `.logs/success.log` |
-| `API`     | API request logs         | Varies by status code | `.logs/api.log`     |
+### API middleware
+
+For API middleware logs, all logs are stored in `.logs/api.log`.
+| Status Code | Description | Console Color |
+| ----------- | ---------------------------------- | ------------- |
+| `200-299` | Successful responses (200 – 299) | Green |
+| `300-399` | Redirection messages (300 – 399) | Cyan |
+| `400-499` | Client error responses (400 – 499) | Red |
+| `500-599` | Server error responses (500 – 599) | BG-Red |
+
+### General logger
+
+| Log level | Description              | Console color | File path           |
+| --------- | ------------------------ | ------------- | ------------------- |
+| `INFO`    | General information logs | Cyan          | `.logs/info.log`    |
+| `ERROR`   | Errors and exceptions    | Red           | `.logs/error.log`   |
+| `SUCCESS` | Success messages         | Green         | `.logs/success.log` |
