@@ -18,6 +18,7 @@ cspell.json
 .npmignore
 .gitignore
 .eslintrc.js
+eslint.config.js
 .prettierrc
 .prettierignore
 .editorconfig

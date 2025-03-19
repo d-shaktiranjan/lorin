@@ -3,14 +3,6 @@ import { logMessageToConsoleAndFile, colorize } from "./logger.js";
 
 const loggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const startTime = Date.now();
-    const originalSend = res.send.bind(res);
-
-    let responseBody: string | Buffer = "";
-
-    res.send = (body) => {
-        responseBody = body;
-        return originalSend(body);
-    };
 
     res.on("finish", () => {
         const method = req.method;
