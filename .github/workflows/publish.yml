@@ -87,6 +87,6 @@ jobs:
 
       # Publish on npm
       - name: Publish the package
-        run: pnpm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

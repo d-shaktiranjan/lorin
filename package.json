@@ -1,6 +1,6 @@
 {
     "name": "lorin",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Express middleware for colorful API logging with file.",
     "type": "module",
     "main": "dist/index.cjs",
@@ -12,7 +12,6 @@
     },
     "scripts": {
         "build": "tsc && cp dist/index.js dist/index.mjs && cp dist/index.js dist/index.cjs",
-        "publish": "npm publish",
         "spell": "cspell lint .",
         "format.check": "prettier . --check",
         "format": "prettier . --write",
