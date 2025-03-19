@@ -13,7 +13,9 @@
     "scripts": {
         "build": "tsc && cp dist/index.js dist/index.mjs && cp dist/index.js dist/index.cjs",
         "publish": "npm publish --access public",
-        "spell": "cspell lint ."
+        "spell": "cspell lint .",
+        "format.check": "prettier . --check",
+        "format": "prettier . --write"
     },
     "keywords": [
         "lorin",
@@ -30,6 +32,7 @@
     "devDependencies": {
         "@types/express": "^5.0.0",
         "cspell": "^8.17.5",
+        "prettier": "^3.5.3",
         "typescript": "^5.8.2"
     },
     "packageManager": "pnpm@10.6.4"
