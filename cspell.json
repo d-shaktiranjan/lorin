@@ -6,5 +6,11 @@
         "Ranjan",
         "Shakti",
         "shaktiranjan"
+    ],
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/dist/**",
+        "pnpm-lock.yaml",
+        "eslint.config.mjs"
     ]
 }

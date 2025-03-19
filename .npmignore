@@ -14,15 +14,18 @@ pnpm-lock.yaml
 yarn.lock
 
 # Development-related files
+cspell.json
 .npmignore
 .gitignore
 .eslintrc.js
+eslint.config.js
 .prettierrc
 .prettierignore
 .editorconfig
 
 # Logs & temporary files
 logs/
+.logs/
 *.log
 .npmrc
 .DS_Store

@@ -22,19 +22,19 @@ const LOG_RECORDS: Record<
 
 export const logger = (
     message: unknown,
-    logType: "INFO" | "ERROR" | "SUCCESS" = "INFO"
+    logType: "INFO" | "ERROR" | "SUCCESS" = "INFO",
 ) => {
     logMessageToConsoleAndFile(
         message,
         LOG_RECORDS[logType].filePath,
-        LOG_RECORDS[logType].color
+        LOG_RECORDS[logType].color,
     );
 };
 
 export function logMessageToConsoleAndFile(
     message: unknown,
     filePath: string,
-    color: keyof ReturnType<typeof colorize> = "cyan"
+    color: keyof ReturnType<typeof colorize> = "cyan",
 ) {
     const timeStamp = new Date().toLocaleString("sv-SE");
     const logMessage = `[${timeStamp}] ${message}\n`;
