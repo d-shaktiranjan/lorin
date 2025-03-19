@@ -1,6 +1,6 @@
 {
     "name": "lorin",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Express middleware for colorful API logging with file.",
     "type": "module",
     "main": "dist/index.cjs",
