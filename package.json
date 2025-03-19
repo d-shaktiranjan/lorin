@@ -12,7 +12,8 @@
     },
     "scripts": {
         "build": "tsc && cp dist/index.js dist/index.mjs && cp dist/index.js dist/index.cjs",
-        "publish": "npm publish --access public"
+        "publish": "npm publish --access public",
+        "spell": "cspell lint ."
     },
     "keywords": [
         "lorin",
@@ -28,6 +29,7 @@
     "license": "MIT",
     "devDependencies": {
         "@types/express": "^5.0.0",
+        "cspell": "^8.17.5",
         "typescript": "^5.8.2"
     },
     "packageManager": "pnpm@10.6.4"
