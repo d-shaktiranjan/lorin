@@ -55,6 +55,3 @@ jobs:
         run: |
           pnpm lint
           echo "Congrats! Your code passes the ESLint check 👍"
-
-    # Optional: This can be added to ensure the job fails when a command fails
-    fail-fast: true
