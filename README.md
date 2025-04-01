@@ -33,10 +33,9 @@ This can be used to highlight specific events, such as server restarts, database
 ```js
 import { logger } from "lorin";
 
-logger("App started"); // general propose (default type will be "INFO")
-logger("App started", "INFO"); // You can also specify the log level as "INFO"
-logger("Successfully connect to DB", "SUCCESS"); // for success logs
-logger("Unable to connect to the DB", "ERROR"); // for failure or error logs
+logger.info("App started"); // general propose
+logger.success("Successfully connect to DB", "SUCCESS"); // for success logs
+logger.error("Unable to connect to the DB", "ERROR"); // for failure or error logs
 ```
 
 Sample console output:
@@ -49,12 +48,13 @@ Lorin offers different log levels, each with a specific console color and defaul
 ### API middleware
 
 For API middleware logs, all logs are stored in `.logs/api.log`.
-| Status Code | Description | Console Color |
-| ----------- | ---------------------------------- | ------------- |
-| `200-299` | Successful responses (200 – 299) | Green |
-| `300-399` | Redirection messages (300 – 399) | Cyan |
-| `400-499` | Client error responses (400 – 499) | Red |
-| `500-599` | Server error responses (500 – 599) | BG-Red |
+
+| Status Code | Description            | Console Color |
+| ----------- | ---------------------- | ------------- |
+| `200-299`   | Successful responses   | Green         |
+| `300-399`   | Redirection messages   | Cyan          |
+| `400-499`   | Client error responses | Red           |
+| `500-599`   | Server error responses | BG-Red        |
 
 ### General logger
 
