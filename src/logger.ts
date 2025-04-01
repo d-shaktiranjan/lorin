@@ -20,16 +20,28 @@ const LOG_RECORDS: Record<
     SUCCESS: { filePath: `${LOG_DIR}/success.log`, color: "green" },
 };
 
-export const logger = (
+export const logger = {
+    info: (message: unknown) => {
+        loggerWithType(message);
+    },
+    error: (message: unknown) => {
+        loggerWithType(message, "ERROR");
+    },
+    success: (message: unknown) => {
+        loggerWithType(message, "SUCCESS");
+    },
+};
+
+export function loggerWithType(
     message: unknown,
     logType: "INFO" | "ERROR" | "SUCCESS" = "INFO",
-) => {
+) {
     logMessageToConsoleAndFile(
         message,
         LOG_RECORDS[logType].filePath,
         LOG_RECORDS[logType].color,
     );
-};
+}
 
 export function logMessageToConsoleAndFile(
     message: unknown,
