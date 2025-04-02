@@ -20,16 +20,43 @@ const LOG_RECORDS: Record<
     SUCCESS: { filePath: `${LOG_DIR}/success.log`, color: "green" },
 };
 
-export const logger = (
+/**
+ * Logger interface for logging messages at different levels (info, error, success).
+ * Provides methods to log messages to both console and a file.
+ */
+export const logger = {
+    /**
+     * Logs an informational message to both console and the 'info.log' file.
+     * The message is colorized in cyan.
+     *
+     * @param message - The message to log.
+     */
+    info: (message: unknown) => loggerWithType(message, "INFO"),
+
+    /**
+     * Logs an error message to both console and the 'error.log' file.
+     * The message is colorized in red.
+     *
+     * @param message - The error message to log.
+     */
+    error: (message: unknown) => loggerWithType(message, "ERROR"),
+
+    /**
+     * Logs a success message to both console and the 'success.log' file.
+     * The message is colorized in green.
+     *
+     * @param message - The success message to log.
+     */
+    success: (message: unknown) => loggerWithType(message, "SUCCESS"),
+};
+
+export function loggerWithType(
     message: unknown,
     logType: "INFO" | "ERROR" | "SUCCESS" = "INFO",
-) => {
-    logMessageToConsoleAndFile(
-        message,
-        LOG_RECORDS[logType].filePath,
-        LOG_RECORDS[logType].color,
-    );
-};
+) {
+    const { filePath, color } = LOG_RECORDS[logType];
+    logMessageToConsoleAndFile(message, filePath, color);
+}
 
 export function logMessageToConsoleAndFile(
     message: unknown,
