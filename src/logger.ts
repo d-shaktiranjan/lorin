@@ -21,26 +21,17 @@ const LOG_RECORDS: Record<
 };
 
 export const logger = {
-    info: (message: unknown) => {
-        loggerWithType(message);
-    },
-    error: (message: unknown) => {
-        loggerWithType(message, "ERROR");
-    },
-    success: (message: unknown) => {
-        loggerWithType(message, "SUCCESS");
-    },
+    info: (message: unknown) => loggerWithType(message, "INFO"),
+    error: (message: unknown) => loggerWithType(message, "ERROR"),
+    success: (message: unknown) => loggerWithType(message, "SUCCESS"),
 };
 
 export function loggerWithType(
     message: unknown,
     logType: "INFO" | "ERROR" | "SUCCESS" = "INFO",
 ) {
-    logMessageToConsoleAndFile(
-        message,
-        LOG_RECORDS[logType].filePath,
-        LOG_RECORDS[logType].color,
-    );
+    const { filePath, color } = LOG_RECORDS[logType];
+    logMessageToConsoleAndFile(message, filePath, color);
 }
 
 export function logMessageToConsoleAndFile(
