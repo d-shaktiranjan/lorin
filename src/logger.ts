@@ -1,16 +1,17 @@
 import { writeFile } from "fs/promises";
 import { existsSync, mkdirSync } from "fs";
+import CONFIG from "./config.js";
 
 export const colorize = (...args: unknown[]) => ({
     red: `\x1b[31m${args.join(" ")}\x1b[0m`,
     green: `\x1b[32m${args.join(" ")}\x1b[0m`,
-    cyan: `\x1b[36m${args.join(" ")}\x1b[0m`,
+    cyan: `\x1b[36m${args.join(" ")}\x1b[0ms`,
     bgRed: `\x1b[41m${args.join(" ")}\x1b[0m`,
     yellow: `\x1b[33m${args.join(" ")}\x1b[0m`,
     default: `\x1b[0m${args.join(" ")}\x1b[0m`,
 });
 
-const LOG_DIR = ".logs";
+const LOG_DIR = CONFIG.logDir;
 
 const LOG_RECORDS: Record<
     string,
@@ -78,9 +79,11 @@ export function logMessageToConsoleAndFile(
 
     console.log(`[${timeStamp}]`, colorize(message)[color]);
 
-    // create logs dir
-    if (!existsSync(LOG_DIR)) mkdirSync(LOG_DIR);
+    if (CONFIG.isStoreInFile) {
+        // create logs dir
+        if (!existsSync(LOG_DIR)) mkdirSync(LOG_DIR);
 
-    // store in to file
-    writeFile(filePath, logMessage, { flag: "a" }).catch(console.error);
+        // store in to file
+        writeFile(filePath, logMessage, { flag: "a" }).catch(console.error);
+    }
 }
