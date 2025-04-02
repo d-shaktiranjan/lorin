@@ -1,6 +1,6 @@
 # Lorin - Express Logger
 
-Lorin is a lightweight and dependency-free logger for Express.js application. It logs API requests to the console and stores logs in a file.
+Lorin is a lightweight, dependency-free Express.js middleware for colorful, categorized logging of API requests, with both console output and file storage.
 
 ## Installation
 
@@ -33,13 +33,14 @@ This can be used to highlight specific events, such as server restarts, database
 ```js
 import { logger } from "lorin";
 
-logger.info("App started"); // general propose
-logger.success("Successfully connect to DB", "SUCCESS"); // for success logs
-logger.error("Unable to connect to the DB", "ERROR"); // for failure or error logs
+logger.info("App started"); // informational or general logs
+logger.success("Successfully connect to DB"); // success logs
+logger.warn("Lorin 1.x is outdated"); // warn logs
+logger.error("Unable to connect to the DB"); // failure or error logs
 ```
 
 Sample console output:
-![Screenshot 2025-03-20 at 12 03 48 AM](https://github.com/user-attachments/assets/c8da1919-e8c9-41d8-9567-4b69b0d91300)
+![image](https://github.com/user-attachments/assets/712208e9-e8b8-4955-b3e3-d6a06676193c)
 
 ## Log levels & paths
 
@@ -58,8 +59,9 @@ For API middleware logs, all logs are stored in `.logs/api.log`.
 
 ### General logger
 
-| Log level | Description              | Console color | File path           |
-| --------- | ------------------------ | ------------- | ------------------- |
-| `INFO`    | General information logs | Cyan          | `.logs/info.log`    |
-| `ERROR`   | Errors and exceptions    | Red           | `.logs/error.log`   |
-| `SUCCESS` | Success messages         | Green         | `.logs/success.log` |
+| Log method | Description                        | Console color | File path           |
+| ---------- | ---------------------------------- | ------------- | ------------------- |
+| `info`     | General information logs           | Cyan          | `.logs/info.log`    |
+| `success`  | Successful operations logs         | Green         | `.logs/success.log` |
+| `warn`     | Warnings, potential issues logs    | Yellow        | `.logs/warn.log`    |
+| `error`    | Errors, failures, or critical logs | Red           | `.logs/error.log`   |
