@@ -35,12 +35,12 @@ import { logger } from "lorin";
 
 logger.info("App started"); // informational or general logs
 logger.success("Successfully connect to DB"); // success logs
-logger.warn("This will be deprecated soon"); // warn logs
+logger.warn("Lorin 1.x is outdated"); // warn logs
 logger.error("Unable to connect to the DB"); // failure or error logs
 ```
 
 Sample console output:
-![Screenshot 2025-03-20 at 12 03 48 AM](https://github.com/user-attachments/assets/c8da1919-e8c9-41d8-9567-4b69b0d91300)
+![image](https://github.com/user-attachments/assets/712208e9-e8b8-4955-b3e3-d6a06676193c)
 
 ## Log levels & paths
 
