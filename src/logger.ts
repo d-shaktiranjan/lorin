@@ -6,6 +6,7 @@ export const colorize = (...args: unknown[]) => ({
     green: `\x1b[32m${args.join(" ")}\x1b[0m`,
     cyan: `\x1b[36m${args.join(" ")}\x1b[0m`,
     bgRed: `\x1b[41m${args.join(" ")}\x1b[0m`,
+    yellow: `\x1b[33m${args.join(" ")}\x1b[0m`,
     default: `\x1b[0m${args.join(" ")}\x1b[0m`,
 });
 
@@ -17,11 +18,12 @@ const LOG_RECORDS: Record<
 > = {
     INFO: { filePath: `${LOG_DIR}/info.log`, color: "cyan" },
     ERROR: { filePath: `${LOG_DIR}/error.log`, color: "red" },
+    WARN: { filePath: `${LOG_DIR}/warn.log`, color: "yellow" },
     SUCCESS: { filePath: `${LOG_DIR}/success.log`, color: "green" },
 };
 
 /**
- * Logger interface for logging messages at different levels (info, error, success).
+ * Logger interface for logging messages at different levels (info, error, warn, success).
  * Provides methods to log messages to both console and a file.
  */
 export const logger = {
@@ -42,6 +44,14 @@ export const logger = {
     error: (message: unknown) => loggerWithType(message, "ERROR"),
 
     /**
+     * Logs a warning message to both console and the 'warn.log' file.
+     * The message is colorized in yellow.
+     *
+     * @param message - The warning message to log.
+     */
+    warn: (message: unknown) => loggerWithType(message, "WARN"),
+
+    /**
      * Logs a success message to both console and the 'success.log' file.
      * The message is colorized in green.
      *
@@ -52,7 +62,7 @@ export const logger = {
 
 export function loggerWithType(
     message: unknown,
-    logType: "INFO" | "ERROR" | "SUCCESS" = "INFO",
+    logType: "INFO" | "ERROR" | "SUCCESS" | "WARN" = "INFO",
 ) {
     const { filePath, color } = LOG_RECORDS[logType];
     logMessageToConsoleAndFile(message, filePath, color);
