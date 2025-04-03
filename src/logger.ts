@@ -65,7 +65,7 @@ export function loggerWithType(
     logType: "INFO" | "ERROR" | "SUCCESS" | "WARN" = "INFO",
 ) {
     const { filePath, color } = LOG_RECORDS[logType];
-    logMessageToConsoleAndFile(message, filePath, color);
+    logMessageToConsoleAndFile(`${logType}: ${message}`, filePath, color);
 }
 
 export function logMessageToConsoleAndFile(
