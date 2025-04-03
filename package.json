@@ -1,6 +1,6 @@
 {
     "name": "lorin",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "Lorin is a lightweight, dependency-free Express.js middleware for colorful, categorized logging of API requests, with both console output and file storage.",
     "type": "module",
     "main": "dist/index.cjs",
@@ -8,7 +8,8 @@
     "types": "dist/index.d.ts",
     "exports": {
         "import": "./dist/index.mjs",
-        "require": "./dist/index.cjs"
+        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
     },
     "scripts": {
         "build": "tsc && cp dist/index.js dist/index.mjs && cp dist/index.js dist/index.cjs",

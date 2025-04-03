@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { logMessageToConsoleAndFile, colorize } from "./logger.js";
+import { logMessageToConsoleAndFile } from "./logger.js";
+import { colorize } from "./config.js";
 
 /**
  * Express middleware that logs HTTP request details including method, route, status code, and response time.

@@ -40,7 +40,7 @@ logger.error("Unable to connect to the DB"); // failure or error logs
 ```
 
 Sample console output:
-![image](https://github.com/user-attachments/assets/712208e9-e8b8-4955-b3e3-d6a06676193c)
+![image](https://github.com/user-attachments/assets/e0d3cd57-217a-4ed4-8fd2-b38b257f89c7)
 
 ## Log levels & paths
 
