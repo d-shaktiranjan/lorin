@@ -5,22 +5,13 @@ export const colorize = (...args: unknown[]) => ({
     red: `\x1b[31m${args.join(" ")}\x1b[0m`,
     green: `\x1b[32m${args.join(" ")}\x1b[0m`,
     cyan: `\x1b[36m${args.join(" ")}\x1b[0m`,
-    bgRed: `\x1b[41m${args.join(" ")}\x1b[0m`,
     yellow: `\x1b[33m${args.join(" ")}\x1b[0m`,
+    bgRed: `\x1b[41m${args.join(" ")}\x1b[0m`,
+    bgGreen: `\x1b[42m${args.join(" ")}\x1b[0m`,
+    bgCyan: `\x1b[46m${args.join(" ")}\x1b[0m`,
+    bgYellow: `\x1b[43m${args.join(" ")}\x1b[0m`,
     default: `\x1b[0m${args.join(" ")}\x1b[0m`,
 });
-
-const LOG_DIR = ".logs";
-
-const LOG_RECORDS: Record<
-    string,
-    { filePath: string; color: keyof ReturnType<typeof colorize> }
-> = {
-    INFO: { filePath: `${LOG_DIR}/info.log`, color: "cyan" },
-    ERROR: { filePath: `${LOG_DIR}/error.log`, color: "red" },
-    WARN: { filePath: `${LOG_DIR}/warn.log`, color: "yellow" },
-    SUCCESS: { filePath: `${LOG_DIR}/success.log`, color: "green" },
-};
 
 /**
  * Logger interface for logging messages at different levels (info, error, warn, success).
@@ -60,23 +51,51 @@ export const logger = {
     success: (message: unknown) => loggerWithType(message, "SUCCESS"),
 };
 
+const LOG_DIR = ".logs";
+
+const LOG_RECORDS: Record<
+    string,
+    { filePath: string; color: keyof ReturnType<typeof colorize> }
+> = {
+    INFO: { filePath: `${LOG_DIR}/info.log`, color: "cyan" },
+    ERROR: { filePath: `${LOG_DIR}/error.log`, color: "red" },
+    WARN: { filePath: `${LOG_DIR}/warn.log`, color: "yellow" },
+    SUCCESS: { filePath: `${LOG_DIR}/success.log`, color: "green" },
+};
+
 export function loggerWithType(
     message: unknown,
     logType: "INFO" | "ERROR" | "SUCCESS" | "WARN" = "INFO",
 ) {
     const { filePath, color } = LOG_RECORDS[logType];
-    logMessageToConsoleAndFile(`${logType}: ${message}`, filePath, color);
+    logMessageToConsoleAndFile(message, filePath, color, {
+        label: logType,
+    });
 }
 
 export function logMessageToConsoleAndFile(
     message: unknown,
     filePath: string,
     color: keyof ReturnType<typeof colorize> = "cyan",
+    options: {
+        label: string;
+    } | null = null,
 ) {
     const timeStamp = new Date().toLocaleString("sv-SE");
     const logMessage = `[${timeStamp}] ${message}\n`;
 
-    console.log(`[${timeStamp}]`, colorize(message)[color]);
+    // color log with label
+    if (options?.label) {
+        const bgColor = color.replace(
+            /^[a-z]/,
+            (match) => `bg${match.toUpperCase()}`,
+        ) as keyof ReturnType<typeof colorize>;
+        console.log(
+            `[${timeStamp}]`,
+            colorize(options.label + ":")[bgColor],
+            colorize(message)[color],
+        );
+    } else console.log(`[${timeStamp}]`, colorize(message)[color]); // log without label
 
     // create logs dir
     if (!existsSync(LOG_DIR)) mkdirSync(LOG_DIR);
