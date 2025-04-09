@@ -3,16 +3,31 @@
     "version": "2.0.3-test.0",
     "description": "Lorin is a lightweight, dependency-free Express.js middleware for colorful, categorized logging of API requests, with both console output and file storage.",
     "type": "module",
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
-    "types": "dist/types/index.d.ts",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "exports": {
-        "import": "./dist/esm/index.js",
-        "require": "./dist/cjs/index.js",
-        "types": "./dist/types/index.d.ts"
+        ".": {
+            "import": {
+                "types": "./dist/index.d.mts",
+                "default": "./dist/index.mjs"
+            },
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            }
+        }
     },
+    "files": [
+        "dist/",
+        "tsconfig.json"
+    ],
     "scripts": {
-        "build": "rm -rf dist && tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
+        "clean": "rm -rf dist",
+        "build:cjs": "esbuild --platform=node --bundle --target=es2022 --format=cjs --outfile=dist/index.cjs src/index.ts",
+        "build:esm": "esbuild --platform=node --bundle --target=es2022 --format=esm --outfile=dist/index.mjs src/index.ts",
+        "build:types": "dts-bundle-generator --out-file=dist/index.d.ts src/index.ts && cp dist/index.d.ts dist/index.d.cts && cp dist/index.d.ts dist/index.d.mts",
+        "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm && pnpm run build:types",
         "spell": "cspell lint .",
         "format.check": "prettier . --check",
         "format": "prettier . --write",
@@ -34,6 +49,8 @@
         "@eslint/js": "^9.22.0",
         "@types/express": "^5.0.0",
         "cspell": "^8.17.5",
+        "dts-bundle-generator": "^8.0.1",
+        "esbuild": "^0.25.2",
         "eslint": "^9.22.0",
         "globals": "^16.0.0",
         "prettier": "^3.5.3",
