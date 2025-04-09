@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": "src",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "target": "ES6",
-        "strict": true,
         "declaration": true,
-        "allowJs": true
+        "declarationDir": "dist",
+        "emitDeclarationOnly": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "target": "ES2022",
+        "module": "ES2022"
     },
     "include": ["src"]
 }

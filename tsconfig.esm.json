@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/esm",
+        "module": "ES2022",
+        "target": "ES2022",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true
+    },
+    "include": ["src"]
+}
