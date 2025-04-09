@@ -24,7 +24,8 @@ app.use(loggerMiddleware); // use the middleware before using your app routers &
 ```
 
 Sample console output:
-![Screenshot 2025-03-20 at 12 13 36 AM](https://github.com/user-attachments/assets/88463324-d888-4c6f-b752-37f62350266b)
+![lorin-loggerMiddleware](https://github.com/user-attachments/assets/5fa0ac5e-f44b-42b4-b69f-49b8bf02fc36)
+
 
 ### General logger
 
@@ -40,7 +41,8 @@ logger.error("Unable to connect to the DB"); // failure or error logs
 ```
 
 Sample console output:
-![image](https://github.com/user-attachments/assets/e0d3cd57-217a-4ed4-8fd2-b38b257f89c7)
+![lorin-logger](https://github.com/user-attachments/assets/9d914b16-0b69-4d51-88fd-e7570de9b938)
+
 
 ## Log levels & paths
 
