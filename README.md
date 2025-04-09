@@ -26,7 +26,6 @@ app.use(loggerMiddleware); // use the middleware before using your app routers &
 Sample console output:
 ![lorin-loggerMiddleware](https://github.com/user-attachments/assets/5fa0ac5e-f44b-42b4-b69f-49b8bf02fc36)
 
-
 ### General logger
 
 This can be used to highlight specific events, such as server restarts, database connections, and more. The logs are stored in the corresponding files mentioned below.
@@ -42,7 +41,6 @@ logger.error("Unable to connect to the DB"); // failure or error logs
 
 Sample console output:
 ![lorin-logger](https://github.com/user-attachments/assets/9d914b16-0b69-4d51-88fd-e7570de9b938)
-
 
 ## Log levels & paths
 
