@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, RequestHandler } from "express";
 import { logMessageToConsoleAndFile } from "./logger.js";
 import { colorize } from "./config.js";
 
@@ -25,7 +25,11 @@ import { colorize } from "./config.js";
  * // Console output: [2024-03-21 10:30:45] http: GET /api/users 200 (15ms)
  * // File output: [2024-03-21 10:30:45] http: GET /api/users 200 (15ms)
  */
-const loggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
+const loggerMiddleware: RequestHandler = (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+): void => {
     const startTime = Date.now();
 
     res.on("finish", () => {
