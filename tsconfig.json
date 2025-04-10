@@ -1,13 +1,12 @@
 {
+    "include": ["src"],
+    "exclude": ["node_modules"],
     "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": "src",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "target": "ES6",
+        "target": "ES2020",
+        "moduleResolution": "Node",
+        "esModuleInterop": true,
         "strict": true,
-        "declaration": true,
-        "allowJs": true
-    },
-    "include": ["src"]
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    }
 }
