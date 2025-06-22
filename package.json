@@ -18,6 +18,9 @@
             }
         }
     },
+    "bin": {
+        "lorin": "./lorin.js"
+    },
     "files": [
         "dist/",
         "tsconfig.json"
