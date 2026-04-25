@@ -1,6 +1,6 @@
 {
     "name": "lorin",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "description": "Lorin is a lightweight, dependency-free Express.js middleware for colorful, categorized logging of API requests, with both console output and file storage.",
     "type": "module",
     "main": "./dist/index.cjs",
@@ -46,16 +46,16 @@
     "homepage": "https://github.com/d-shaktiranjan/lorin/blob/main/README.md",
     "license": "MIT",
     "devDependencies": {
-        "@eslint/js": "^9.39.2",
+        "@eslint/js": "^10.0.1",
         "@types/express": "^5.0.6",
-        "cspell": "^9.6.0",
+        "cspell": "^10.0.0",
         "dts-bundle-generator": "^9.5.1",
-        "esbuild": "^0.27.2",
-        "eslint": "^9.39.2",
-        "globals": "^17.0.0",
-        "prettier": "^3.8.0",
-        "typescript": "^5.9.3",
-        "typescript-eslint": "^8.53.1"
+        "esbuild": "^0.28.0",
+        "eslint": "^10.2.1",
+        "globals": "^17.5.0",
+        "prettier": "^3.8.3",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.59.0"
     },
     "packageManager": "pnpm@10.6.4"
 }
