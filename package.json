@@ -1,6 +1,6 @@
 {
     "name": "lorin",
-    "version": "2.0.5",
+    "version": "2.0.5-test.1",
     "description": "Lorin is a lightweight, dependency-free Express.js middleware for colorful, categorized logging of API requests, with both console output and file storage.",
     "type": "module",
     "main": "./dist/index.cjs",
@@ -18,6 +18,9 @@
             }
         }
     },
+    "bin": {
+        "lorin": "./lorin.js"
+    },
     "files": [
         "dist/",
         "tsconfig.json"
@@ -27,7 +30,8 @@
         "build:cjs": "esbuild --platform=node --bundle --target=es2022 --format=cjs --outfile=dist/index.cjs src/index.ts",
         "build:esm": "esbuild --platform=node --bundle --target=es2022 --format=esm --outfile=dist/index.mjs src/index.ts",
         "build:types": "dts-bundle-generator --out-file=dist/index.d.ts src/index.ts && cp dist/index.d.ts dist/index.d.cts && cp dist/index.d.ts dist/index.d.mts",
-        "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm && pnpm run build:types",
+        "build:cli": "esbuild --platform=node --bundle --target=es2022 --format=esm --outfile=dist/lorin.js src/lorin.ts",
+        "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm && pnpm run build:types && pnpm run build:cli",
         "spell": "cspell lint .",
         "format.check": "prettier . --check",
         "format": "prettier . --write",
@@ -55,7 +59,7 @@
         "globals": "^17.5.0",
         "prettier": "^3.8.3",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.59.0"
+        "typescript-eslint": "^8.59.1"
     },
     "packageManager": "pnpm@10.6.4"
 }
